@@ -1,0 +1,327 @@
+/* 增强的动画效果 */
+
+/* CSS动画效果 */
+
+/* 页面切换动画 */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 唱片旋转动画 */
+.record.active svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 唱片和歌名选项的消失动画 */
+.record.fade-out,
+.song-title-btn.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    to { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* 正确答案动画效果 */
+.song-title-btn.correct {
+    animation: correctAnswer 0.8s ease-out forwards;
+}
+
+@keyframes correctAnswer {
+    0% { background-color: #f0f0f0; transform: scale(1); }
+    50% { background-color: #4CAF50; color: white; transform: scale(1.05); box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); }
+    100% { background-color: #4CAF50; color: white; transform: scale(1); box-shadow: 0 0 20px rgba(76, 175, 80, 0.8); }
+}
+
+/* 错误答案动画效果 */
+.song-title-btn.incorrect {
+    animation: incorrectAnswer 0.5s ease-in-out;
+}
+
+@keyframes incorrectAnswer {
+    0%, 100% { transform: translateX(0); background-color: #f0f0f0; }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); background-color: #f44336; color: white; }
+    20%, 40%, 60%, 80% { transform: translateX(5px); background-color: #f44336; color: white; }
+}
+
+/* 生命值减少动画效果 */
+#lifeCounter.lost-life {
+    animation: lifeLost 0.5s ease-in-out;
+}
+
+@keyframes lifeLost {
+    0% { color: #333; transform: scale(1); }
+    50% { color: #f44336; transform: scale(1.1); }
+    100% { color: #333; transform: scale(1); }
+}
+
+/* 结果页面动画效果 */
+#resultContent.animated {
+    animation: resultAppear 0.8s ease-out forwards;
+}
+
+@keyframes resultAppear {
+    0% { 
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    50% { 
+        opacity: 0.7;
+        transform: translateY(-10px) scale(1.02);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* 按钮悬停效果增强 */
+button.primary-btn:hover {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+    70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+/* 提示按钮特殊动画 */
+#hintBtn:hover {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    to { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+/* 点击反馈动画 */
+button:active {
+    animation: clickFeedback 0.2s ease-out;
+}
+
+@keyframes clickFeedback {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* 规则弹窗动画 */
+#rulesModal:not(.hidden) {
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.screen {
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.screen.hidden {
+    transform: translateY(100vh);
+    opacity: 0;
+}
+
+/* 唱片增强效果 */
+.record {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.record::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.record:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.record:active {
+    transform: scale(1.05);
+}
+
+/* 唱片旋转动画增强 */
+.record.active {
+    animation: rotate 3s linear infinite;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+}
+
+/* 按钮点击波纹效果 */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s;
+}
+
+button:active::after {
+    transform: scale(2);
+}
+
+/* 答案反馈动画 */
+.song-title-btn.correct {
+    animation: correctPulse 0.6s ease;
+}
+
+.song-title-btn.incorrect {
+    animation: shake 0.5s ease;
+}
+
+@keyframes correctPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+/* 消失动画增强 */
+.fade-out {
+    animation: fadeOut 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(180deg);
+    }
+}
+
+/* 状态变化动画 */
+.life-counter,
+.song-counter {
+    transition: all 0.3s ease;
+}
+
+.life-counter.lost-life {
+    animation: lifeFlash 0.5s ease;
+    color: #e74c3c;
+}
+
+@keyframes lifeFlash {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* 弹窗动画 */
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+/* 结果页面动画 */
+.result-title,
+.result-message {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.result-content.animated .result-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.result-content.animated .result-message {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+/* 加载动画（用于音频加载） */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* 响应式动画调整 */
+@media (max-width: 768px) {
+    .record:hover {
+        transform: scale(1.05);
+    }
+    
+    .game-title {
+        transition: font-size 0.3s ease;
+    }
+}

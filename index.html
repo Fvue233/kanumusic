@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>听歌猜歌名·卡奴音乐版</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- 游戏启动页 -->
+    <div id="startScreen" class="screen">
+        <div class="start-container">
+            <h1 class="game-title">听歌猜歌名</h1>
+            <h2 class="game-subtitle">卡奴音乐版</h2>
+            <div class="start-buttons">
+                <button id="startBtn" class="primary-btn">开始游戏</button>
+                <button id="rulesBtn" class="secondary-btn">游戏规则</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏规则弹窗 -->
+    <div id="rulesModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>游戏规则</h2>
+            <ul>
+                <li>1. 点击唱片播放音乐</li>
+                <li>2. 从下方选择对应的歌曲名称</li>
+                <li>3. 猜对后当前音乐停止、对应唱片和歌名选项消失</li>
+                <li>4. 猜错扣除一条生命（初始有5条生命）</li>
+                <li>5. 生命耗尽则游戏结束</li>
+                <li>6. 猜对所有歌曲则游戏胜利</li>
+            </ul>
+            <button id="closeRulesBtn" class="secondary-btn">关闭</button>
+        </div>
+    </div>
+
+    <!-- 游戏主界面 -->
+    <div id="gameScreen" class="screen hidden">
+        <!-- 顶部状态区 -->
+        <div class="game-status">
+            <div id="lifeCounter" class="status-item" style="color: #e74c3c; text-align: left;">
+                <span style="margin-right: 10px;">❤️</span>
+                <span class="status-label">生命：</span>
+                <span id="lifeCount" class="status-value">5</span>
+            </div>
+            <div class="status-item" style="color: #3498db; text-align: right;">
+                <span class="status-label">剩余歌曲：</span>
+                <span id="songCount" class="status-value">8</span>
+            </div>
+        </div>
+
+        <!-- 唱片区域 -->
+        <div id="recordsGrid" class="records-grid">
+            <!-- 唱片将通过JavaScript动态生成 -->
+        </div>
+
+        <!-- 歌名选项区 -->
+        <div class="song-titles">
+            <h3>请选择正确的歌名</h3>
+            <div id="songTitlesList" class="song-titles-list">
+                <!-- 歌名选项将通过JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <!-- 功能按钮区 -->
+        <div class="action-buttons">
+            <button id="exitBtn" class="secondary-btn">退出</button>
+        </div>
+    </div>
+
+    <!-- 结算页面 -->
+    <div id="resultScreen" class="screen hidden">
+        <div id="resultContent" class="result-content">
+            <h2 id="resultTitle" class="result-title">游戏结束</h2>
+            <p id="resultMessage" class="result-message">你的成绩</p>
+            <button id="restartBtn" class="primary-btn">再来一局</button>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
